@@ -1,28 +1,69 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const location = useLocation();
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/#services" },
-    { name: "About", href: "/#about" },
-    { name: "Leadership", href: "/#leadership" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "/", section: "home" },
+    { name: "Services", href: "/#services", section: "services" },
+    { name: "About", href: "/#about", section: "about" },
+    { name: "Leadership", href: "/#leadership", section: "leadership" },
+    { name: "Contact", href: "/contact", section: "contact" },
   ];
 
-  const handleNavClick = (href: string) => {
+  // Scroll spy effect
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveSection(location.pathname.replace("/", "") || "home");
+      return;
+    }
+
+    const handleScroll = () => {
+      const sections = ["leadership", "about", "services", "home"];
+      const scrollPosition = window.scrollY + 150;
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+
+      // If at the very top, set to home
+      if (window.scrollY < 100) {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
+  const handleNavClick = (href: string, section: string) => {
     setIsOpen(false);
     if (href.startsWith("/#")) {
-      const element = document.querySelector(href.replace("/", ""));
+      const element = document.getElementById(section);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  };
+
+  const isActive = (link: typeof navLinks[0]) => {
+    if (location.pathname === "/contact" && link.section === "contact") return true;
+    if (location.pathname === "/" && link.section === activeSection) return true;
+    return false;
   };
 
   return (
@@ -45,14 +86,17 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.href
+                onClick={() => handleNavClick(link.href, link.section)}
+                className={`text-sm font-medium transition-colors hover:text-primary relative ${
+                  isActive(link)
                     ? "text-primary"
                     : "text-muted-foreground"
                 }`}
               >
                 {link.name}
+                {isActive(link) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                )}
               </Link>
             ))}
           </div>
@@ -81,9 +125,9 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={() => handleNavClick(link.href, link.section)}
                   className={`text-sm font-medium py-2 transition-colors hover:text-primary ${
-                    location.pathname === link.href
+                    isActive(link)
                       ? "text-primary"
                       : "text-muted-foreground"
                   }`}

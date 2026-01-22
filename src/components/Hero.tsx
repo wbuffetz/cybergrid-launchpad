@@ -4,7 +4,7 @@ import { Shield, ArrowRight, CheckCircle } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Cyber Grid Background */}
       <div className="absolute inset-0 cyber-grid-bg opacity-40" />
       
