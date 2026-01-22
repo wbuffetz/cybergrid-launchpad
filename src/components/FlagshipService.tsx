@@ -40,21 +40,21 @@ const FlagshipService = () => {
   ];
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-cyber-darker relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-20 lg:py-32 bg-cyber-darker relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-primary/5 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none" />
       
       <div className="container px-4 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
-            <Target className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Flagship Service</span>
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/30 bg-primary/5 mb-4 sm:mb-6">
+            <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+            <span className="text-xs sm:text-sm font-medium text-primary">Flagship Service</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             Web Risk Assessment
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto px-2">
             A risk-based web security evaluation focusing on vulnerabilities with the highest real-world 
             and business impact—not just theoretical severity.
           </p>
@@ -77,7 +77,7 @@ const FlagshipService = () => {
             </div>
 
             {/* Description */}
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               CyberGrid's Web Risk Assessment goes beyond standard vulnerability scanning. 
               Our proprietary CRBWSF methodology evaluates your web applications through the lens 
               of real-world attack scenarios and business consequences.
@@ -85,15 +85,15 @@ const FlagshipService = () => {
 
             {/* Priorities */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-foreground">CRBWSF Prioritizes</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">CRBWSF Prioritizes</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {priorities.map((priority, index) => (
                   <div 
                     key={index}
-                    className="p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors"
+                    className="p-3 sm:p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors"
                   >
-                    <h4 className="font-semibold text-foreground mb-1">{priority.title}</h4>
-                    <p className="text-sm text-muted-foreground">{priority.description}</p>
+                    <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1">{priority.title}</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{priority.description}</p>
                   </div>
                 ))}
               </div>
@@ -101,21 +101,21 @@ const FlagshipService = () => {
           </div>
 
           {/* Right Column - What's Included & Pricing */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Pricing Card */}
-            <div className="p-8 rounded-2xl bg-card border border-primary/30 cyber-border">
-              <div className="flex items-start justify-between mb-6">
+            <div className="p-5 sm:p-8 rounded-2xl bg-card border border-primary/30 cyber-border">
+              <div className="flex items-start justify-between mb-4 sm:mb-6">
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">Investment</p>
-                  <p className="text-4xl font-bold text-primary">IDR 10,000,000</p>
-                  <p className="text-sm text-muted-foreground">per web application</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-1">Investment</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">IDR 10,000,000</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">per web application</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-primary" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
               </div>
               
-              <Button asChild variant="cyber" size="lg" className="w-full mb-6">
+              <Button asChild variant="cyber" size="lg" className="w-full mb-4 sm:mb-6 min-h-[48px] touch-manipulation">
                 <Link to="/contact" className="flex items-center justify-center gap-2">
                   Get Web Risk Assessment
                   <ArrowRight className="w-4 h-4" />
@@ -129,14 +129,14 @@ const FlagshipService = () => {
 
             {/* What's Included */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-foreground">What's Included</h3>
-              <div className="space-y-3">
+              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">What's Included</h3>
+              <div className="space-y-2 sm:space-y-3">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-4 h-4 text-primary" />
+                  <div key={index} className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                     </div>
-                    <span className="text-sm text-muted-foreground">{feature.text}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">{feature.text}</span>
                   </div>
                 ))}
               </div>
@@ -144,12 +144,12 @@ const FlagshipService = () => {
 
             {/* Deliverables */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-foreground">Deliverables</h3>
+              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Deliverables</h3>
               <div className="space-y-2">
                 {deliverables.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
+                  <div key={index} className="flex items-center gap-2 sm:gap-3">
+                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-muted-foreground">{item}</span>
                   </div>
                 ))}
               </div>

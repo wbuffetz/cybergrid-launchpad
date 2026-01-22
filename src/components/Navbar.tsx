@@ -16,6 +16,27 @@ const Navbar = () => {
     { name: "Contact", href: "/contact", section: "contact" },
   ];
 
+  // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isOpen) setIsOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   // Scroll spy effect
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -38,14 +59,13 @@ const Navbar = () => {
         }
       }
 
-      // If at the very top, set to home
       if (window.scrollY < 100) {
         setActiveSection("home");
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
@@ -53,10 +73,12 @@ const Navbar = () => {
   const handleNavClick = (href: string, section: string) => {
     setIsOpen(false);
     if (href.startsWith("/#")) {
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     }
   };
 
@@ -67,15 +89,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <Shield className="w-5 h-5 text-primary" />
+          <Link to="/" className="flex items-center gap-2 group" onClick={() => setIsOpen(false)}>
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
-            <span className="text-xl font-bold text-foreground">
+            <span className="text-lg sm:text-xl font-bold text-foreground">
               Cyber<span className="text-primary">Grid</span>
             </span>
           </Link>
@@ -88,9 +110,7 @@ const Navbar = () => {
                 to={link.href}
                 onClick={() => handleNavClick(link.href, link.section)}
                 className={`text-sm font-medium transition-colors hover:text-primary relative ${
-                  isActive(link)
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                  isActive(link) ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {link.name}
@@ -110,8 +130,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 -mr-2 text-foreground touch-manipulation"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -119,24 +140,26 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-background/98 backdrop-blur-xl border-t border-border animate-fade-in overflow-y-auto">
+            <div className="container px-4 py-6 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
                   onClick={() => handleNavClick(link.href, link.section)}
-                  className={`text-sm font-medium py-2 transition-colors hover:text-primary ${
+                  className={`text-base font-medium py-4 px-4 rounded-lg transition-colors touch-manipulation ${
                     isActive(link)
-                      ? "text-primary"
-                      : "text-muted-foreground"
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:bg-muted"
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Button asChild variant="cyber" className="w-full mt-2">
-                <Link to="/contact">Request Assessment</Link>
+              <Button asChild variant="cyber" size="lg" className="w-full mt-4">
+                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  Request Assessment
+                </Link>
               </Button>
             </div>
           </div>
