@@ -1,3 +1,4 @@
+import { User } from "lucide-react";
 
 
 const Leadership = () => {
@@ -5,12 +6,12 @@ const Leadership = () => {
     {
       name: "Fidel Tobias Rorimpandey",
       role: "Chief Executive Officer",
-      initials: "FT",
+      initials: "CEO",
     },
     {
       name: "Neorafa Arfienda Zulkarnaen",
       role: "Chief Technology Officer",
-      initials: "NA",
+      initials: "CTO",
     },
   ];
 
@@ -33,19 +34,20 @@ const Leadership = () => {
         {/* Leadership Cards */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12">
           {leaders.map((leader, index) => (
-            <div 
+            <div
               key={index}
               className="w-full max-w-xs sm:max-w-sm p-6 sm:p-8 rounded-2xl bg-card border border-border cyber-border text-center group hover:border-primary/50 transition-all duration-300"
             >
               {/* Avatar */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center group-hover:border-primary/50 transition-colors">
-                <span className="text-xl sm:text-2xl font-bold text-primary">{leader.initials}</span>
+              <div className="flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
+                  <User className="w-6 h-6 text-orange-500" />
+                </div>
               </div>
-
               {/* Info */}
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1 sm:mb-2">{leader.name}</h3>
               <p className="text-sm sm:text-base text-primary font-medium mb-3 sm:mb-4">{leader.role}</p>
-              
+
               {/* Divider */}
               <div className="w-12 h-px bg-border mx-auto" />
             </div>

@@ -1,12 +1,21 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield, MessageCircle, FileDown, Mail, MapPin, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+
 const Contact = () => {
+  
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
   const whatsappNumber = "6281234567890"; // Replace with actual WhatsApp number
-  const whatsappMessage = encodeURIComponent("Hello CyberGrid, I'm interested in your Web Risk Assessment service.");
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappMessage = encodeURIComponent("Hello Cybergrid, I'm interested in your Web Risk Assessment service.");
+  const whatsappUrl = `https://wa.me/${6281329090406}?text=${"Hi Cybergrid, I'm interested in your Web Risk Assessment service."}`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -25,7 +34,7 @@ const Contact = () => {
               <span className="text-xs sm:text-sm font-medium text-primary">Get in Touch</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-              Talk to CyberGrid{" "}
+              Talk to Cybergrid{" "}
               <span className="text-primary">Security Team</span>
             </h1>
             <p className="text-sm sm:text-base lg:text-lg text-muted-foreground px-2">
@@ -51,7 +60,7 @@ const Contact = () => {
 
             {/* Download Company Profile Button */}
             <a
-              href="/cybergrid-company-profile.pdf"
+              href="/CYBERGRID-COMPRO.pdf"
               download
               className="block w-full"
             >

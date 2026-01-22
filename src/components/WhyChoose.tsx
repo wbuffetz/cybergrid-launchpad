@@ -53,7 +53,7 @@ const WhyChoose = () => {
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-            Why Choose <span className="text-primary">CyberGrid</span>
+            Why Choose <span className="text-primary">Cybergrid</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
             We're not just another security vendor. We're your partner in building a resilient digital future.

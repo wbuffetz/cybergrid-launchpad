@@ -10,10 +10,10 @@ const About = () => {
         {/* About Section */}
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            About <span className="text-primary">CyberGrid</span>
+            About <span className="text-primary">Cybergrid</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed px-2">
-            CyberGrid is a next-generation cybersecurity and IT solutions provider founded by passionate 
+            Cybergrid is a next-generation cybersecurity and IT solutions provider founded by passionate 
             young innovators. We partner with organizations to secure, optimize, and scale digital 
             infrastructure using proactive, modern security strategies.
           </p>

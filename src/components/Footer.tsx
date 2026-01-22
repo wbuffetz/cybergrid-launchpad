@@ -10,16 +10,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <Link to="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              </div>
-              <span className="text-lg sm:text-xl font-bold text-foreground">
-                Cyber<span className="text-primary">Grid</span>
-              </span>
-            </Link>
+            
+              <img
+                src="/logo.png"
+                alt="CyberGrid Logo"
+                className="h-6 sm:h-7 w-auto"
+              />
+          
             <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 max-w-sm">
-              PT Siber Generasi Indonesia Digital — Next-generation cybersecurity and IT solutions 
+              PT Siber Generasi Indonesia Digital — Next-generation cybersecurity and IT solutions
               for modern businesses.
             </p>
             <p className="text-xs sm:text-sm font-mono text-muted-foreground tracking-wider">
@@ -32,24 +31,24 @@ const Footer = () => {
             <h4 className="font-semibold text-sm sm:text-base text-foreground mb-3 sm:mb-4">Quick Links</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <Link to="/#services" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#services" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
                   Services
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/#about" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#about" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
                   About Us
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/#leadership" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#leadership" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
                   Leadership
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/contact" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
