@@ -65,16 +65,17 @@ const FlagshipService = () => {
           {/* Left Column - Description & Priorities */}
           <div className="space-y-8">
             {/* Framework Badge */}
-            <div className="inline-block">
-              <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card border border-border">
+            <Link to="/crbwsf" className="inline-block group">
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
                 <Shield className="w-6 h-6 text-primary" />
                 <div>
                   <p className="text-xs text-muted-foreground">Powered by</p>
                   <p className="font-bold text-foreground">CRBWSF Framework</p>
                   <p className="text-xs text-muted-foreground">CyberGrid Risk-Based Web Security Framework</p>
                 </div>
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors ml-2" />
               </div>
-            </div>
+            </Link>
 
             {/* Description */}
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
